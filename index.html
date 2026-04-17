@@ -1,0 +1,45 @@
+---
+layout: default
+---
+<style>
+  .article-list { list-style: none; padding: 0; margin: 0; }
+  .article-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    transition: all 0.2s ease;
+  }
+  .article-card:hover {
+    box-shadow: 0 6px 16px var(--shadow-color); 
+    transform: translateY(-2px); 
+  }
+  .article-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .article-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+    color: var(--primary-color); 
+  }
+  .article-date {
+    font-size: 0.9rem;
+    color: #757575; 
+  }
+</style>
+
+<ul class="article-list">
+  {% for post in site.posts %}
+    <li class="article-card">
+      <a href="{{ post.url | relative_url }}">
+        <h2 class="article-title">{{ post.title }}</h2>
+        <div class="article-date">{{ post.date | date: "%Y/%m/%d" }}</div>
+      </a>
+    </li>
+  {% endfor %}
+</ul>
